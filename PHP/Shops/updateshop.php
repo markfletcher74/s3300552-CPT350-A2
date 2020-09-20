@@ -42,7 +42,7 @@ if(isset($_POST["shop_id"]) && !empty($_POST["shop_id"])){
     // Check input errors before inserting in database
 	if(empty($name_err) && empty($address_err)){
 	// Prepare an update statement
-	$sql = "UPDATE tbl_shops SET name = '" . $name . "', address = '" .$address . "' WHERE shop_id = " . $shop_id . ";";
+	$sql = "UPDATE tbl_Shops SET name = '" . $name . "', address = '" .$address . "' WHERE shop_id = " . $shop_id . ";";
 
 	if ($link->query($sql) === TRUE) {
 			header("location: listshops.php");
@@ -89,7 +89,7 @@ if(isset($_POST["shop_id"]) && !empty($_POST["shop_id"])){
         $shop_id =  trim($_GET["shop_id"]);
         
         // Prepare a select statement
-        $sql = "SELECT * FROM tbl_shops WHERE shop_id = ?";
+        $sql = "SELECT * FROM tbl_Shops WHERE shop_id = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "i", $param_id);

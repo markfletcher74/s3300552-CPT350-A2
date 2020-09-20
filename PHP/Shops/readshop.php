@@ -14,7 +14,7 @@ if(isset($_GET["shop_id"]) && !empty(trim($_GET["shop_id"])))
     require_once "../config.php";
     
     // Prepare a select statement
-    $sql = "SELECT * FROM tbl_shops WHERE shop_id = '" . trim($_GET["shop_id"]) . "';";
+    $sql = "SELECT * FROM tbl_Shops WHERE shop_id = '" . trim($_GET["shop_id"]) . "';";
 
 
 	if($result = mysqli_query($link, $sql)){

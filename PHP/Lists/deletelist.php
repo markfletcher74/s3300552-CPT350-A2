@@ -12,7 +12,7 @@ if(isset($_POST["list_id"]) && !empty($_POST["list_id"])){
     require_once "../config.php";
     
     // Prepare a delete statement
-    $sql = "DELETE FROM tbl_lists WHERE list_id = ?";
+    $sql = "DELETE FROM tbl_Lists WHERE list_id = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters

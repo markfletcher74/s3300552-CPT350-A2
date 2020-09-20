@@ -39,8 +39,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before inserting in database
     if(empty($name_err) && empty($address_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO tbl_shops (name, address) VALUES ('" . $name . "' , '" .$address . "')";
- 
+        $sql = "INSERT INTO tbl_Shops (name, address) VALUES ('" . $name . "' , '" .$address . "')";
+		
 		if ($link->query($sql) === TRUE) {
 	            header("location: listshops.php");
                 exit();

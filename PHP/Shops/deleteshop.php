@@ -12,7 +12,7 @@ if(isset($_POST["shop_id"]) && !empty($_POST["shop_id"])){
     require_once "../config.php";
     
     // Prepare a delete statement
-    $sql = "DELETE FROM tbl_shops WHERE shop_id = ?";
+    $sql = "DELETE FROM tbl_Shops WHERE shop_id = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters

@@ -3,7 +3,7 @@
 	Mark Fletcher
 	Grocery Optimiser
 	
-	ListItems.php	-	List all grocery items
+	Listlists.php	-	List all lists
 	
 */
 ?>
@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Groceries</title>
+    <title>lists</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
@@ -39,36 +39,34 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left">Grocery Items</h2>
-                        <a href="createitem.php" class="btn btn-success pull-right">Add New Item</a>
+                        <h2 class="pull-left">Shopping Lists</h2>
+                        <a href="createlist.php" class="btn btn-success pull-right">Add New list</a>
                     </div>
                     <?php
                     // Include config file
                     require_once "../config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM tbl_Items ORDER BY brand,name;";
+                    $sql = "SELECT * FROM tbl_lists ORDER BY name,address;";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th>#</th>";
-                                        echo "<th>Brand</th>";
-                                        echo "<th>Name</th>";
+                                        echo "<th>list Name</th>";
                                         echo "<th>Action</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                        echo "<td>" . $row['item_id'] . "</td>";
-                                        echo "<td>" . $row['brand'] . "</td>";
+                                        echo "<td>" . $row['list_id'] . "</td>";
                                         echo "<td>" . $row['name'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='readitem.php?item_id=". $row['item_id'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
-                                            echo "<a href='updateitem.php?item_id=". $row['item_id'] ."' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='deleteitem.php?item_id=". $row['item_id'] ."' title='Delete Record' data-toggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>";
+                                            echo "<a href='readlist.php?list_id=". $row['list_id'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
+                                            echo "<a href='updatelist.php?list_id=". $row['list_id'] ."' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='deletelist.php?list_id=". $row['list_id'] ."' title='Delete Record' data-toggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }
@@ -92,4 +90,3 @@
     </div>
 </body>
 </html>
-

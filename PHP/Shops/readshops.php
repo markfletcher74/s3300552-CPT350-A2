@@ -3,18 +3,18 @@
 	Mark Fletcher
 	Grocery Optimiser
 	
-	ReadItem.php	-	Displays a grocery item
+	Readshop.php	-	Displays a shop
 	
 */
 
 // Check existence of id parameter before processing further
-if(isset($_GET["item_id"]) && !empty(trim($_GET["item_id"])))
+if(isset($_GET["shop_id"]) && !empty(trim($_GET["shop_id"])))
 {
     // Include config file
     require_once "../config.php";
     
     // Prepare a select statement
-    $sql = "SELECT * FROM tbl_Items WHERE item_id = '" . trim($_GET["item_id"]) . "';";
+    $sql = "SELECT * FROM tbl_shops WHERE shop_id = '" . trim($_GET["shop_id"]) . "';";
 
 
 	if($result = mysqli_query($link, $sql)){
@@ -25,7 +25,7 @@ if(isset($_GET["item_id"]) && !empty(trim($_GET["item_id"])))
 				
 				// Retrieve individual field value
 				$name = $row["name"];
-				$brand = $row["brand"];
+				$address = $row["address"];
 		}
 		else
 		{
@@ -63,17 +63,17 @@ if(isset($_GET["item_id"]) && !empty(trim($_GET["item_id"])))
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h1>View Item</h1>
+                        <h1>View shop</h1>
                     </div>
                     <div class="form-group">
                         <label>Name</label>
                         <p class="form-control-static"><?php echo $row["name"]; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Brand</label>
-                        <p class="form-control-static"><?php echo $row["brand"]; ?></p>
+                        <label>Address</label>
+                        <p class="form-control-static"><?php echo $row["address"]; ?></p>
                     </div>
-                    <p><a href="listitems.php" class="btn btn-primary">Back</a></p>
+                    <p><a href="listshops.php" class="btn btn-primary">Back</a></p>
                 </div>
             </div>        
         </div>

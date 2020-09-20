@@ -1,15 +1,23 @@
 <?php
+/*	s3300552 - CPT350SP2 - A2
+	Mark Fletcher
+	Grocery Optimiser
+	
+	UpdateItem.php	-	Updates a grocery item
+	
+*/
+
 // Include config file
-require_once "config.php";
+require_once "../config.php";
  
 // Define variables and initialize with empty values
 $name = $brand = "";
 $name_err = $brand_err = "";
  
 // Processing form data when form is submitted
-if(isset($_POST["id"]) && !empty($_POST["id"])){
+if(isset($_POST["item_id"]) && !empty($_POST["item_id"])){
     // Get hidden input value
-    $id = $_POST["id"];
+    $item_id = $_POST["item_id"];
     
     // Validate name
     $input_name = trim($_POST["name"]);
@@ -21,18 +29,32 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $name = $input_name;
     }
     
-    // Validate Brand
+    // Validate brand brand
     $input_brand = trim($_POST["brand"]);
     if(empty($input_brand)){
-        $brand_err = "Please enter an brand.";     
+        $brand_err = "Please enter a brand.";
+    } elseif(!filter_var($input_brand, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+        $brand_err = "Please enter a valid brand.";
     } else{
         $brand = $input_brand;
     }
     
     // Check input errors before inserting in database
+	if(empty($name_err) && empty($brand_err)){
+	// Prepare an update statement
+	$sql = "UPDATE tbl_Items SET name = '" . $name . "', brand = '" .$brand . "' WHERE item_id = " . $item_id . ";";
+
+	if ($link->query($sql) === TRUE) {
+			header("location: listitems.php");
+			exit();
+	} else{
+			echo "Something went wrong (" .$link->error.") Please try again later.";
+	}
+
+	/*
     if(empty($name_err) && empty($brand_err)){
         // Prepare an update statement
-        $sql = "UPDATE tbl_Items SET name=?, brand=? WHERE id=?";
+        $sql = "UPDATE tbl_Items SET name=?, brand=? WHERE item_id=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -41,7 +63,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             // Set parameters
             $param_name = $name;
             $param_brand = $brand;
-            $param_id = $id;
+            $param_id = $item_id;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -52,7 +74,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                 echo "Something went wrong. Please try again later.";
             }
         }
-         
+		*/
+		
         // Close statement
         mysqli_stmt_close($stmt);
     }
@@ -61,18 +84,18 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     mysqli_close($link);
 } else{
     // Check existence of id parameter before processing further
-    if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
+    if(isset($_GET["item_id"]) && !empty(trim($_GET["item_id"]))){
         // Get URL parameter
-        $id =  trim($_GET["id"]);
+        $item_id =  trim($_GET["item_id"]);
         
         // Prepare a select statement
-        $sql = "SELECT * FROM tbl_Items WHERE id = ?";
+        $sql = "SELECT * FROM tbl_Items WHERE item_id = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "i", $param_id);
             
             // Set parameters
-            $param_id = $id;
+            $param_id = $item_id;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -138,13 +161,13 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="help-block"><?php echo $name_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($brand_err)) ? 'has-error' : ''; ?>">
-                            <label>Brand</label>
-                            <textarea name="brand" class="form-control"><?php echo $brand; ?></textarea>
+                            <label>brand</label>
+                            <input type="text" name="brand" class="form-control" value="<?php echo $brand; ?>">
                             <span class="help-block"><?php echo $brand_err;?></span>
                         </div>
-                        <input type="hidden" name="id" value="<?php echo $id; ?>"/>
+                        <input type="hidden" name="item_id" value="<?php echo $item_id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Submit">
-                        <a href="index.php" class="btn btn-default">Cancel</a>
+                        <a href="listitems.php" class="btn btn-default">Cancel</a>
                     </form>
                 </div>
             </div>        

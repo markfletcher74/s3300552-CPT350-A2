@@ -1,8 +1,16 @@
 <?php
+/*	s3300552 - CPT350SP2 - A2
+	Mark Fletcher
+	Grocery Optimiser
+	
+	ReadItem.php	-	Displays a grocery item
+	
+*/
+
 // Check existence of id parameter before processing further
 if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     // Include config file
-    require_once "config.php";
+    require_once "../config.php";
     
     // Prepare a select statement
     $sql = "SELECT * FROM tbl_Items WHERE item_id = ?";

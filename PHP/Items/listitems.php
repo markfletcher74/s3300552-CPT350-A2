@@ -1,7 +1,10 @@
 <?php
-/* CPT350 - Cloud Computing
-  s3300552 - Mark Fletcher
-  
+/*	s3300552 - CPT350SP2 - A2
+	Mark Fletcher
+	Grocery Optimiser
+	
+	ListItems.php	-	List all grocery items
+	
 */
 ?>
 <!DOCTYPE html>
@@ -36,12 +39,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left">Items Details</h2>
+                        <h2 class="pull-left">Grocery Items</h2>
                         <a href="createitem.php" class="btn btn-success pull-right">Add New Item</a>
                     </div>
                     <?php
                     // Include config file
-                    require_once "config.php";
+                    require_once "../config.php";
                     
                     // Attempt select query execution
                     $sql = "SELECT * FROM tbl_Items ORDER BY brand,name;";
@@ -59,13 +62,13 @@
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                        echo "<td>" . $row['id'] . "</td>";
+                                        echo "<td>" . $row['item_id'] . "</td>";
                                         echo "<td>" . $row['brand'] . "</td>";
                                         echo "<td>" . $row['name'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='readitem.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
-                                            echo "<a href='updateitem.php?id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='deleteitem.php?id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>";
+                                            echo "<a href='readitem.php?item_id=". $row['item_id'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
+                                            echo "<a href='updateitem.php?item_id=". $row['item_id'] ."' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='deleteitem.php?item_id=". $row['item_id'] ."' title='Delete Record' data-toggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }

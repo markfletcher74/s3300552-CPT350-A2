@@ -5,7 +5,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     require_once "config.php";
     
     // Prepare a select statement
-    $sql = "SELECT * FROM grocery_upc WHERE id = ?";
+    $sql = "SELECT * FROM tbl_Items WHERE item_id = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -23,9 +23,8 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 
                 // Retrieve individual field value
+                $brand = $row["brand"];
                 $name = $row["name"];
-                $address = $row["address"];
-                $salary = $row["salary"];
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
                 header("location: error.php");
@@ -70,16 +69,12 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <h1>View Record</h1>
                     </div>
                     <div class="form-group">
+                        <label>Brand</label>
+                        <p class="form-control-static"><?php echo $row["brand"]; ?></p>
+                    </div>
+                    <div class="form-group">
                         <label>Name</label>
                         <p class="form-control-static"><?php echo $row["name"]; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <p class="form-control-static"><?php echo $row["address"]; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Salary</label>
-                        <p class="form-control-static"><?php echo $row["salary"]; ?></p>
                     </div>
                     <p><a href="index.php" class="btn btn-primary">Back</a></p>
                 </div>

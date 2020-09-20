@@ -1,5 +1,9 @@
+#   s3300552 CPT350 - Cloud Computing A2
+#   Mark Fletcher
+
 version: 0.0
 os: linux
+
 files:
-  - source: ./PHP
+  - source: /PHP
     destination: /var/www/html

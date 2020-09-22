@@ -47,7 +47,7 @@
                     require_once "../config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM tbl_Lists ORDER BY name,address;";
+                    $sql = "SELECT * FROM tbl_List ORDER BY name,address;";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
@@ -66,6 +66,7 @@
                                         echo "<td>";
                                             echo "<a href='readlist.php?list_id=". $row['list_id'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
                                             echo "<a href='updatelist.php?list_id=". $row['list_id'] ."' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+											echo "<a href='addlistitem.php?list_id=". $row['list_id'] ."' title='Add Item to List' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
                                             echo "<a href='deletelist.php?list_id=". $row['list_id'] ."' title='Delete Record' data-toggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";

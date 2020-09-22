@@ -14,7 +14,7 @@ if(isset($_GET["list_id"]) && !empty(trim($_GET["list_id"])))
     require_once "../config.php";
     
     // Prepare a select statement
-    $sql = "SELECT * FROM tbl_Lists WHERE list_id = '" . trim($_GET["list_id"]) . "';";
+    $sql = "SELECT * FROM tbl_List WHERE list_id = '" . trim($_GET["list_id"]) . "';";
 
 
 	if($result = mysqli_query($link, $sql)){

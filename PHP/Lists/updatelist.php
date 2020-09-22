@@ -32,7 +32,7 @@ if(isset($_POST["list_id"]) && !empty($_POST["list_id"])){
     // Check input errors before inserting in database
 	if(empty($name_err)){
 	// Prepare an update statement
-	$sql = "UPDATE tbl_Lists SET name = '" . $name . "' WHERE list_id = " . $list_id . ";";
+	$sql = "UPDATE tbl_List SET name = '" . $name . "' WHERE list_id = " . $list_id . ";";
 
 	if ($link->query($sql) === TRUE) {
 			header("location: listlists.php");
@@ -79,7 +79,7 @@ if(isset($_POST["list_id"]) && !empty($_POST["list_id"])){
         $list_id =  trim($_GET["list_id"]);
         
         // Prepare a select statement
-        $sql = "SELECT * FROM tbl_Lists WHERE list_id = ?";
+        $sql = "SELECT * FROM tbl_List WHERE list_id = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "i", $param_id);

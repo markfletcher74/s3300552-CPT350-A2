@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before inserting in database
     if(empty($name_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO tbl_List (name) VALUES ('" . $name . "')";
+        $sql = "INSERT INTO tbl_Lists (name) VALUES ('" . $name . "')";
  
 		if ($link->query($sql) === TRUE) {
 	            header("location: listlists.php");

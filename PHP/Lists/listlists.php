@@ -47,7 +47,7 @@
                     require_once "../config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM tbl_List ORDER BY name,address;";
+                    $sql = "SELECT * FROM tbl_Lists ORDER BY name";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";

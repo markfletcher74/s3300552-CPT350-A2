@@ -33,8 +33,6 @@ if(isset($_POST["shop_id"]) && !empty($_POST["shop_id"])){
     $input_address = trim($_POST["address"]);
     if(empty($input_address)){
         $address_err = "Please enter an address.";
-    } elseif(!filter_var($input_address, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $address_err = "Please enter a valid address.";
     } else{
         $address = $input_address;
     }

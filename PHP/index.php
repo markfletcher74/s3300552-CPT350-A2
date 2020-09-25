@@ -23,6 +23,10 @@
         .page-header h2{
             margin-top: 0;
         }
+		.img.resize	{
+			max-width:50%;
+			max-height:50%;
+		}
         table tr td:last-child a{
             margin-right: 15px;
         }
@@ -40,20 +44,20 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h2 class="pull-left">Grocery Optimiser</h2>
-						<img src="icons/Grocery Optimiser Logo.png">
+						<img class="resize" src="img/Grocery Optimiser Logo.png">
                     </div>
 					<table class='table table-bordered table-striped'>
 					<tr>
-						<td colspan="2"><img src="icons/list.png" href="shops/listlists.php"></td>
+						<td><img class="resize" src="img/list.png" href="shops/listlists.php"></td><td><img class="resize" src="img/list.png" href="Items/addprices.php"></td>
 					</tr>
 					<tr>
-						<td><img src="icons/shop.png" href="shops/listshops.php"></td><td><img src="icons/groceries.png" href="items/listitems.php"></td>
+						<td><img class="resize" src="img/shop.png" href="shops/listshops.php"></td><td><img src="img/groceries.png" href="items/listitems.php"></td>
 					</tr>
 					</table>
                 </div>
             </div>        
         </div>
     </div>
-	<center><small>Icons made by <a href="https://www.flaticon.com/authors/catkuro" title="catkuro">catkuro</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></small>
+	<center><small>img made by <a href="https://www.flaticon.com/authors/catkuro" title="catkuro">catkuro</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></small>
 </body>
 </html>

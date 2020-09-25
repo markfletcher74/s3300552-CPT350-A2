@@ -97,6 +97,7 @@ if(isset($_POST["list_id"]) && !empty($_POST["list_id"])){
                     
                     // Retrieve individual field value
                     $name = $row["name"];
+					echo "name is " .$name;
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
                     header("location: error.php");
@@ -140,7 +141,7 @@ if(isset($_POST["list_id"]) && !empty($_POST["list_id"])){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Update Record</h2>
+                        <h2>Update Record <?php echo $name;?></h2>
                     </div>
                     <p>Please edit the input values and submit to update the record.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">

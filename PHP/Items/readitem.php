@@ -1,10 +1,10 @@
 <?php
-/*	s3300552 - CPT350SP2 - A2
-	Mark Fletcher
-	Grocery Optimiser
-	
-	ReadItem.php	-	Displays a grocery item
-	
+/*      s3300552 - CPT350SP2 - A2
+        Mark Fletcher
+        Grocery Optimiser
+
+        ReadItem.php    -       Displays a grocery item
+
 */
 
 // Check existence of id parameter before processing further
@@ -12,30 +12,30 @@ if(isset($_GET["item_id"]) && !empty(trim($_GET["item_id"])))
 {
     // Include config file
     require_once "../config.php";
-    
+
     // Prepare a select statement
     $sql = "SELECT * FROM tbl_Items WHERE item_id = '" . trim($_GET["item_id"]) . "';";
 
 
-	if($result = mysqli_query($link, $sql)){
-		if(mysqli_num_rows($result) > 0)
-		{	
-				/* Fetch result row as an associative array. Since the result set contains only one row, we don't need to use while loop */
-				$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-				
-				// Retrieve individual field value
-				$name = $row["name"];
-				$brand = $row["brand"];
-		}
-		else
-		{
-				echo "Something went wrong (" .$link->error.") Please try again later.";
-				exit();
-		}
-	}
+        if($result = mysqli_query($link, $sql)){
+                if(mysqli_num_rows($result) > 0)
+                {
+                                /* Fetch result row as an associative array. Since the result set contains only one row, we don't need to use while loop */
+                                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+                                // Retrieve individual field value
+                                $name = $row["name"];
+                                $brand = $row["brand"];
+                }
+                else
+                {
+                                echo "Something went wrong (" .$link->error.") Please try again later.";
+                                exit();
+                }
+        }
     // Close statement
     mysqli_stmt_close($stmt);
-    
+
     // Close connection
     mysqli_close($link);
 } else{
@@ -75,7 +75,7 @@ if(isset($_GET["item_id"]) && !empty(trim($_GET["item_id"])))
                     </div>
                     <p><a href="listitems.php" class="btn btn-primary">Back</a></p>
                 </div>
-            </div>        
+            </div>
         </div>
     </div>
 </body>

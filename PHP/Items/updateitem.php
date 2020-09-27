@@ -50,34 +50,9 @@ if(isset($_POST["item_id"]) && !empty($_POST["item_id"])){
 	} else{
 			echo "Something went wrong (" .$link->error.") Please try again later.";
 	}
-
-	/*
-    if(empty($name_err) && empty($brand_err)){
-        // Prepare an update statement
-        $sql = "UPDATE tbl_Items SET name=?, brand=? WHERE item_id=?";
-         
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssi", $param_name, $param_brand, $param_id);
-            
-            // Set parameters
-            $param_name = $name;
-            $param_brand = $brand;
-            $param_id = $item_id;
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Records updated successfully. Redirect to landing page
-                header("location: index.php");
-                exit();
-            } else{
-                echo "Something went wrong. Please try again later.";
-            }
-        }
-		*/
 		
-        // Close statement
-        mysqli_stmt_close($stmt);
+	// Close statement
+	mysqli_stmt_close($stmt);
     }
     
     // Close connection

@@ -114,8 +114,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		}
 	}
 								?>
-							</select>
-                            <input type="text" name="price" class="form-control" value="<?php echo $price; ?>">
+							</select><br>
+                            <label>Price</label><input type="text" name="price" class="form-control" value="<?php echo $price; ?>">
                             <span class="help-block"><?php echo $list_err;?></span>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Submit">

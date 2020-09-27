@@ -1,0 +1,10 @@
+s3300552 CPT350 - Cloud Computing SP2
+Assessment 2 - Project utilising Cloud Computing Technologies
+Mark Fletcher
+
+Grocery Optimiser
+
+A web based portal that allows the maintaining of grocery items,
+shopping lists and prices and allows for optimisng the cost
+of the shopping by showing the shop where to get the item the 
+cheapest.
